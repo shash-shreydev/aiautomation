@@ -40,8 +40,8 @@
       
       /* Borders */
       --border-light: rgba(255, 255, 255, 0.05);
-      --border-medium: rgba(255, 255, 255, 0.10);
-      --border-strong: rgba(255, 255, 255, 0.15);
+      --border-medium: rgba(255, 255, 255, 0.07);
+      --border-strong: rgba(255, 255, 255, 0.07);
       --border: rgba(255, 255, 255, 0.10);
       --divider-subtle: rgba(255, 255, 255, 0.03);
       
@@ -49,7 +49,7 @@
       --cyan: #C6A75E;
       --cyan-dim: rgba(198, 167, 94, 0.12);
       --cyan-glow: rgba(198, 167, 94, 0.20);
-      --card-bg: rgba(15, 23, 42, 0.6);
+      --card-bg: rgba(255, 255, 255, 0.035);
       --purple-dark: #141922;
       --purple-light: #C6A75E;
       --blue-dark: #0B0F19;
@@ -60,14 +60,12 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      background: radial-gradient(
-        circle at 15% 20%,
-        #111827 0%,
-        #0B0F19 40%,
-        #05070C 100%
-      );
+      background:
+        radial-gradient(circle at 20% 20%, #111827 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, #0F172A 0%, transparent 50%),
+        #05070C;
       color: var(--text-primary);
-      font-family: 'Roboto Mono', -apple-system, BlinkMacSystemFont, monospace;
+      font-family: 'Roboto Mono', monospace;
       overflow-x: hidden;
       cursor: none;
     }
@@ -362,7 +360,7 @@
     }
 
     .service-card {
-      background: rgba(15, 23, 42, 0.35);
+      background: rgba(255, 255, 255, 0.035);
       padding: 48px 40px;
       position: relative;
       cursor: none;
@@ -371,10 +369,10 @@
       perspective: 1000px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       contain: layout style paint;
     }
-    .service-card:hover { background: rgba(15, 23, 42, 0.45); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border-color: rgba(255, 255, 255, 0.08); }
+    .service-card:hover { background: rgba(255, 255, 255, 0.035); box-shadow: none; border-color: rgba(255, 255, 255, 0.07); }
 
     .service-card::before {
       content: '';
@@ -439,13 +437,13 @@
       margin-top: 80px;
     }
     .stat-cell {
-      background: rgba(15, 23, 42, 0.35);
+      background: rgba(255, 255, 255, 0.035);
       padding: 56px 40px;
       text-align: center;
       position: relative;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
     .stat-cell::after {
       content: '';
@@ -472,15 +470,15 @@
 
     /* Testimonial */
     .testimonial-block {
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 20px;
       padding: 72px 64px;
-      background: rgba(15, 23, 42, 0.35);
+      background: rgba(255, 255, 255, 0.035);
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      box-shadow: none;
     }
     .testimonial-block::before {
       content: '"';
@@ -603,8 +601,9 @@
     .scroll-line-bar {
       width: 1px;
       height: 48px;
-      background: linear-gradient(to bottom, #00d9ff, transparent);
+      background: linear-gradient(to bottom, #C6A75E, transparent);
       animation: scroll-bar 2s ease-in-out infinite;
+      opacity: 0.7;
     }
     .scroll-line-text {
       font-size: 10px;
@@ -720,8 +719,8 @@
     .feature-visual {
       aspect-ratio: 4/3;
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(15, 23, 42, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.035);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -729,7 +728,7 @@
       overflow: hidden;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      box-shadow: none;
     }
     .feature-visual-inner {
       position: relative;
@@ -932,11 +931,11 @@
         margin-top: 40px;
       }
       .service-card {
-        background: rgba(15, 23, 42, 0.4);
+        background: rgba(255, 255, 255, 0.035);
         padding: 32px 20px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.07);
       }
-      .service-card:hover { background: rgba(15, 23, 42, 0.5); box-shadow: none; }
+      .service-card:hover { background: rgba(255, 255, 255, 0.035); box-shadow: none; }
       .service-card::before { display: none; }
       .service-icon { width: 32px; height: 32px; margin-bottom: 16px; }
       .service-title { font-size: 18px; margin-bottom: 8px; }
@@ -951,9 +950,9 @@
         margin-top: 40px;
       }
       .stat-cell {
-        background: rgba(15, 23, 42, 0.4);
+        background: rgba(255, 255, 255, 0.035);
         padding: 32px 20px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.07);
       }
       .stat-num { font-size: 36px; margin-bottom: 8px; }
       .stat-label { font-size: 12px; }
@@ -1141,7 +1140,13 @@
   </section>
 
   <!-- Logo Strip -->
-  <div style="border-top: 1px solid rgba(0, 217, 255, 0.12); border-bottom: 1px solid rgba(0, 217, 255, 0.12); padding: 28px 0; overflow: hidden; background: rgba(0, 217, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+  <div style="
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 28px 0;
+    overflow: hidden;
+    background: rgba(255,255,255,0.02);
+  ">
     <div class="logo-strip">
       <div class="marquee-track" id="marquee">
         <span class="logo-item">BlackRock</span>
@@ -1300,43 +1305,43 @@
         <svg class="network-vis" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00ffff" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#00d9ff" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#C6A75E" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#C6A75E" stop-opacity="0"/>
             </radialGradient>
           </defs>
           <!-- Connection lines -->
-          <line x1="200" y1="150" x2="80" y2="80" stroke="rgba(0,217,255,0.15)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="320" y2="80" stroke="rgba(0,217,255,0.15)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="80" y2="220" stroke="rgba(0,217,255,0.15)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="320" y2="220" stroke="rgba(0,217,255,0.15)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="200" y2="40" stroke="rgba(0,217,255,0.1)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="200" y2="260" stroke="rgba(0,217,255,0.1)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="40" y2="150" stroke="rgba(0,217,255,0.1)" stroke-width="1"/>
-          <line x1="200" y1="150" x2="360" y2="150" stroke="rgba(0,217,255,0.1)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="80" y2="80" stroke="rgba(198,167,94,0.15)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="320" y2="80" stroke="rgba(198,167,94,0.15)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="80" y2="220" stroke="rgba(198,167,94,0.15)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="320" y2="220" stroke="rgba(198,167,94,0.15)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="200" y2="40" stroke="rgba(198,167,94,0.1)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="200" y2="260" stroke="rgba(198,167,94,0.1)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="40" y2="150" stroke="rgba(198,167,94,0.1)" stroke-width="1"/>
+          <line x1="200" y1="150" x2="360" y2="150" stroke="rgba(198,167,94,0.1)" stroke-width="1"/>
           <!-- Outer nodes -->
-          <circle cx="80" cy="80" r="18" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.25)" stroke-width="1"/>
-          <circle cx="320" cy="80" r="18" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.25)" stroke-width="1"/>
-          <circle cx="80" cy="220" r="18" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.25)" stroke-width="1"/>
-          <circle cx="320" cy="220" r="18" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.25)" stroke-width="1"/>
-          <circle cx="200" cy="40" r="12" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.2)" stroke-width="1"/>
-          <circle cx="200" cy="260" r="12" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.2)" stroke-width="1"/>
-          <circle cx="40" cy="150" r="12" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.2)" stroke-width="1"/>
-          <circle cx="360" cy="150" r="12" fill="rgba(0,217,255,0.08)" stroke="rgba(0,217,255,0.2)" stroke-width="1"/>
+          <circle cx="80" cy="80" r="18" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.25)" stroke-width="1"/>
+          <circle cx="320" cy="80" r="18" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.25)" stroke-width="1"/>
+          <circle cx="80" cy="220" r="18" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.25)" stroke-width="1"/>
+          <circle cx="320" cy="220" r="18" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.25)" stroke-width="1"/>
+          <circle cx="200" cy="40" r="12" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.2)" stroke-width="1"/>
+          <circle cx="200" cy="260" r="12" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.2)" stroke-width="1"/>
+          <circle cx="40" cy="150" r="12" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.2)" stroke-width="1"/>
+          <circle cx="360" cy="150" r="12" fill="rgba(198,167,94,0.08)" stroke="rgba(198,167,94,0.2)" stroke-width="1"/>
           <!-- Center glow -->
           <circle cx="200" cy="150" r="50" fill="url(#nodeGlow)"/>
           <!-- Center node -->
-          <circle cx="200" cy="150" r="28" fill="rgba(0,217,255,0.12)" stroke="rgba(0,217,255,0.5)" stroke-width="1.5"/>
-          <circle cx="200" cy="150" r="8" fill="#00d9ff"/>
+          <circle cx="200" cy="150" r="28" fill="rgba(198,167,94,0.12)" stroke="rgba(198,167,94,0.5)" stroke-width="1.5"/>
+          <circle cx="200" cy="150" r="8" fill="#C6A75E"/>
           <!-- Animated pulse -->
-          <circle cx="200" cy="150" r="28" fill="none" stroke="rgba(0,217,255,0.3)" stroke-width="1">
+          <circle cx="200" cy="150" r="28" fill="none" stroke="rgba(198,167,94,0.3)" stroke-width="1">
             <animate attributeName="r" values="28;48;28" dur="3s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
           </circle>
           <!-- Small inner dots on outer nodes -->
-          <circle cx="80" cy="80" r="5" fill="#00d9ff" opacity="0.6"/>
-          <circle cx="320" cy="80" r="5" fill="#00d9ff" opacity="0.6"/>
-          <circle cx="80" cy="220" r="5" fill="#00d9ff" opacity="0.6"/>
-          <circle cx="320" cy="220" r="5" fill="#00d9ff" opacity="0.6"/>
+          <circle cx="80" cy="80" r="5" fill="#C6A75E" opacity="0.6"/>
+          <circle cx="320" cy="80" r="5" fill="#C6A75E" opacity="0.6"/>
+          <circle cx="80" cy="220" r="5" fill="#C6A75E" opacity="0.6"/>
+          <circle cx="320" cy="220" r="5" fill="#C6A75E" opacity="0.6"/>
           <!-- Labels -->
           <text x="80" y="108" text-anchor="middle" fill="rgba(134,134,139,0.5)" font-size="9" font-family="Roboto Mono">INGEST</text>
           <text x="320" y="108" text-anchor="middle" fill="rgba(134,134,139,0.5)" font-size="9" font-family="Roboto Mono">REASON</text>
