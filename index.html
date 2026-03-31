@@ -774,14 +774,297 @@
       inset: 0;
     }
 
-    @media (max-width: 900px) {
-      #navbar { padding: 0 24px; }
+    /* Mobile Hamburger Menu */
+    .mobile-nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .mobile-nav-toggle:hover { color: #C6A75E; }
+
+    .nav-menu {
+      position: fixed;
+      top: 64px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 64px);
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      overflow-y: auto;
+    }
+    .nav-menu.active { left: 0; }
+    .nav-menu-items {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      gap: 0;
+      list-style: none;
+    }
+    .nav-menu-items li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .nav-menu-items a {
+      display: block;
+      padding: 16px 0;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu-items a:active { color: #C6A75E; }
+    .nav-menu-cta {
+      margin: 24px 0 0 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-menu-cta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #C6A75E 0%, #D4B573 100%);
+      color: #0B0F19;
+      border: 1px solid rgba(198, 167, 94, 0.3);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-menu-cta a:active { background: linear-gradient(135deg, #D4B573 0%, #DCB887 100%); }
+
+    /* Tablet (768px - 1024px) */
+    @media (max-width: 1024px) {
+      #cursor, #cursor-ring { display: none; }
+      
+      #navbar { padding: 0 32px; }
       .nav-links { display: none; }
-      section { padding: 100px 24px; }
-      .services-grid { grid-template-columns: 1fr; }
+      .mobile-nav-toggle { display: block; }
+      
+      section { padding: 120px 32px; }
+      .hero-title { font-size: clamp(40px, 7vw, 80px); }
+      .hero-sub { font-size: 16px; }
+      .section-title { font-size: clamp(28px, 3vw, 48px); }
+      .section-body { font-size: 15px; }
+      
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .feature-row { grid-template-columns: 1fr; }
+      .feature-row { grid-template-columns: 1fr; gap: 48px; }
+      .feature-row.reverse { direction: ltr; }
+      
       footer { flex-direction: column; gap: 24px; text-align: center; }
+    }
+
+    /* Mobile (max-width 768px) */
+    @media (max-width: 768px) {
+      #cursor, #cursor-ring { display: none; }
+      
+      html { font-size: 14px; }
+      
+      #navbar {
+        padding: 0 16px;
+        height: 60px;
+      }
+      .nav-logo { font-size: 14px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .mobile-nav-toggle { display: block; }
+      
+      section { padding: 80px 16px; }
+      
+      .hero-title {
+        font-size: clamp(32px, 8vw, 56px);
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+      .hero-title-line { transform: translateY(105%) translateZ(0); }
+      .hero-sub {
+        font-size: 15px;
+        max-width: 100%;
+        margin-bottom: 40px;
+      }
+      .hero-actions {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .btn-magnetic {
+        font-size: 13px;
+        padding: 12px 24px;
+        flex: 0 0 auto;
+      }
+      .btn-primary:hover, .btn-ghost:hover {
+        box-shadow: none;
+        transform: scale(1);
+      }
+      
+      .section-label { font-size: 10px; margin-bottom: 16px; }
+      .section-title { font-size: clamp(24px, 5vw, 40px); margin-bottom: 16px; }
+      .section-body { font-size: 14px; line-height: 1.6; }
+      
+      .thin-sep { gap: 12px; margin-bottom: 16px; }
+      .thin-sep-line { max-width: 20px; }
+      .thin-sep-line:last-child { display: none; }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        background: none;
+        border: none;
+        border-radius: 0;
+        margin-top: 40px;
+      }
+      .service-card {
+        background: rgba(15, 23, 42, 0.4);
+        padding: 32px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .service-card:hover { background: rgba(15, 23, 42, 0.5); box-shadow: none; }
+      .service-card::before { display: none; }
+      .service-icon { width: 32px; height: 32px; margin-bottom: 16px; }
+      .service-title { font-size: 18px; margin-bottom: 8px; }
+      .service-desc { font-size: 13px; line-height: 1.6; }
+      .service-arrow { display: none; }
+      
+      .stats-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        background: none;
+        border: none;
+        margin-top: 40px;
+      }
+      .stat-cell {
+        background: rgba(15, 23, 42, 0.4);
+        padding: 32px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .stat-num { font-size: 36px; margin-bottom: 8px; }
+      .stat-label { font-size: 12px; }
+      
+      .testimonial-block {
+        padding: 40px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .testimonial-text { font-size: clamp(18px, 2vw, 24px); margin-bottom: 28px; }
+      .testimonial-author { gap: 12px; }
+      .author-avatar { width: 40px; height: 40px; font-size: 14px; }
+      .author-name { font-size: 13px; }
+      .author-role { font-size: 12px; }
+      
+      .feature-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .feature-row.reverse { direction: ltr; }
+      .feature-visual {
+        min-height: 300px;
+        border-radius: 12px;
+        padding: 20px;
+      }
+      .feature-visual::before { display: none; }
+      .terminal { font-size: 10px; padding: 24px; line-height: 1.6; }
+      .terminal-line { gap: 4px; }
+      
+      .cta-block {
+        padding: 80px 16px;
+      }
+      .cta-block .section-title { font-size: clamp(28px, 5vw, 48px); margin-bottom: 16px; }
+      .cta-block > p { font-size: 14px; max-width: 100%; }
+      .cta-block > div { flex-direction: column; gap: 12px; }
+      .cta-block a { width: 100%; }
+      
+      footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+        padding: 32px 16px;
+      }
+      .footer-copy { font-size: 11px; }
+      .footer-links { justify-content: center; gap: 20px; }
+      .footer-links a { font-size: 11px; }
+      
+      .scroll-line { display: none; }
+      .grid-bg { display: none; }
+      .hero-orb, .hero-orb-2, .cta-block::before { display: none; }
+      
+      .logo-strip { gap: 48px; margin-top: 40px; }
+      .logo-item { font-size: 11px; }
+      .marquee-track { gap: 48px; }
+    }
+
+    /* Small Phone (max-width 480px) */
+    @media (max-width: 480px) {
+      html { font-size: 13px; }
+      
+      #navbar { padding: 0 12px; height: 56px; }
+      .nav-logo { font-size: 13px; }
+      .mobile-nav-toggle { font-size: 20px; }
+      
+      section { padding: 60px 12px; }
+      
+      .hero-title { font-size: clamp(28px, 8vw, 44px); margin-bottom: 16px; }
+      .hero-sub { font-size: 14px; margin-bottom: 32px; }
+      .hero-actions { gap: 8px; }
+      .btn-magnetic { font-size: 12px; padding: 10px 20px; }
+      
+      .section-title { font-size: clamp(20px, 5vw, 32px); }
+      .section-body { font-size: 13px; }
+      
+      .service-card { padding: 24px 16px; }
+      .service-icon { margin-bottom: 12px; }
+      .service-title { font-size: 16px; }
+      .service-desc { font-size: 12px; }
+      
+      .stat-num { font-size: 28px; }
+      .stat-cell { padding: 24px 16px; }
+      
+      .testimonial-block { padding: 32px 16px; }
+      .testimonial-text { font-size: 16px; margin-bottom: 20px; }
+      .author-avatar { width: 36px; height: 36px; font-size: 12px; }
+      .author-name { font-size: 12px; }
+      .author-role { font-size: 11px; }
+      
+      .feature-row { gap: 32px; padding: 48px 0; }
+      .feature-visual { min-height: 240px; }
+      .terminal { font-size: 9px; padding: 16px; }
+      
+      .cta-block { padding: 60px 12px; }
+      .cta-block .section-title { font-size: clamp(24px, 5vw, 36px); }
+      .cta-block > p { font-size: 13px; }
+      
+      footer { padding: 24px 12px; gap: 16px; }
+      .footer-copy { font-size: 10px; }
+      .footer-links { gap: 16px; }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .btn-magnetic:hover, .btn-primary:hover, .btn-ghost:hover,
+      .service-card:hover, .logo-item:hover,
+      .footer-links a:hover, .nav-links a:hover { 
+        transform: none;
+        box-shadow: none;
+      }
+      
+      /* Increase touch target sizes */
+      .btn-magnetic, .btn-primary, .btn-ghost { min-height: 44px; }
+      button, a, [role="button"] { min-height: 48px; }
+      
+      /* Remove cursor-related styles */
+      * { cursor: auto !important; }
     }
   </style>
 </head>
@@ -801,7 +1084,19 @@
       <li><a href="#research">Research</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Request Access →</a>
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
   </nav>
+
+  <!-- Mobile Navigation Menu -->
+  <div class="nav-menu" id="nav-menu">
+    <ul class="nav-menu-items">
+      <li><a href="#services" class="nav-menu-link">Services</a></li>
+      <li><a href="#platform" class="nav-menu-link">Platform</a></li>
+      <li><a href="#enterprise" class="nav-menu-link">Enterprise</a></li>
+      <li><a href="#research" class="nav-menu-link">Research</a></li>
+      <li class="nav-menu-cta"><a href="#contact" class="nav-menu-link">Request Access</a></li>
+    </ul>
+  </div>
 
   <!-- Hero Section -->
   <section id="hero" style="padding: 0; max-width: 100%; position: relative;">
@@ -1121,45 +1416,76 @@
       }
     };
 
-    // ─── Custom Cursor ──────────────────────────────────────────────
-    const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursor-ring');
-    let cursorX = 0, cursorY = 0;
-    let ringX = 0, ringY = 0;
+    // ─── Mobile Navigation Menu ─────────────────────────────────────────────
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navMenuLinks = document.querySelectorAll('.nav-menu-link');
 
-    document.addEventListener('mousemove', throttle(e => {
-      cursorX = e.clientX;
-      cursorY = e.clientY;
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-    }, 16), { passive: true });
-
-    function animRing() {
-      ringX += (cursorX - ringX) * 0.12;
-      ringY += (cursorY - ringY) * 0.12;
-      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translateZ(0)`;
-      requestAnimationFrame(animRing);
-    }
-    animRing();
-
-    const btnElements = document.querySelectorAll('a, button, [data-magnetic]');
-    const onMouseEnter = () => {
-      cursor.style.width = '6px';
-      cursor.style.height = '6px';
-      cursorRing.style.width = '52px';
-      cursorRing.style.height = '52px';
-    };
-    const onMouseLeave = () => {
-      cursor.style.width = '10px';
-      cursor.style.height = '10px';
-      cursorRing.style.width = '36px';
-      cursorRing.style.height = '36px';
-    };
-
-    btnElements.forEach(el => {
-      el.addEventListener('mouseenter', onMouseEnter);
-      el.addEventListener('mouseleave', onMouseLeave);
+    mobileNavToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+      mobileNavToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
     });
+
+    navMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileNavToggle.textContent = '☰';
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        mobileNavToggle.textContent = '☰';
+      }
+    });
+
+    // ─── Custom Cursor (Desktop Only) ──────────────────────────────────────────────
+    // Check if device supports hover (desktop)
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
+    
+    if (supportsHover) {
+      const cursor = document.getElementById('cursor');
+      const cursorRing = document.getElementById('cursor-ring');
+      let cursorX = 0, cursorY = 0;
+      let ringX = 0, ringY = 0;
+
+      document.addEventListener('mousemove', throttle(e => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+      }, 16), { passive: true });
+
+      function animRing() {
+        ringX += (cursorX - ringX) * 0.12;
+        ringY += (cursorY - ringY) * 0.12;
+        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translateZ(0)`;
+        requestAnimationFrame(animRing);
+      }
+      animRing();
+
+      const btnElements = document.querySelectorAll('a, button, [data-magnetic]');
+      const onMouseEnter = () => {
+        cursor.style.width = '6px';
+        cursor.style.height = '6px';
+        cursorRing.style.width = '52px';
+        cursorRing.style.height = '52px';
+      };
+      const onMouseLeave = () => {
+        cursor.style.width = '10px';
+        cursor.style.height = '10px';
+        cursorRing.style.width = '36px';
+        cursorRing.style.height = '36px';
+      };
+
+      btnElements.forEach(el => {
+        el.addEventListener('mouseenter', onMouseEnter);
+        el.addEventListener('mouseleave', onMouseLeave);
+      });
+    }
 
     // ─── Navbar Scroll ──────────────────────────────────────────────
     const navbar = document.getElementById('navbar');
@@ -1246,71 +1572,75 @@
       );
     });
 
-    // ─── 3D Tilt Cards ──────────────────────────────────────────────
-    document.querySelectorAll('[data-tilt]').forEach(card => {
-      let tiltTimeout;
-      card.addEventListener('mousemove', throttle(e => {
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) / (rect.width / 2);
-        const dy = (e.clientY - cy) / (rect.height / 2);
+    // ─── 3D Tilt Cards (Desktop Only) ──────────────────────────────────────────────
+    if (supportsHover) {
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        let tiltTimeout;
+        card.addEventListener('mousemove', throttle(e => {
+          const rect = card.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (e.clientX - cx) / (rect.width / 2);
+          const dy = (e.clientY - cy) / (rect.height / 2);
 
-        const mx = ((e.clientX - rect.left) / rect.width) * 100;
-        const my = ((e.clientY - rect.top) / rect.height) * 100;
-        card.style.setProperty('--mx', mx + '%');
-        card.style.setProperty('--my', my + '%');
+          const mx = ((e.clientX - rect.left) / rect.width) * 100;
+          const my = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty('--mx', mx + '%');
+          card.style.setProperty('--my', my + '%');
 
-        gsap.to(card, {
-          rotateX: -dy * 6,
-          rotateY: dx * 6,
-          duration: 0.4,
-          ease: 'power2.out',
-          transformPerspective: 800,
-          overwrite: 'auto'
-        });
-      }, 16));
+          gsap.to(card, {
+            rotateX: -dy * 6,
+            rotateY: dx * 6,
+            duration: 0.4,
+            ease: 'power2.out',
+            transformPerspective: 800,
+            overwrite: 'auto'
+          });
+        }, 16));
 
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, {
-          rotateX: 0,
-          rotateY: 0,
-          duration: 0.6,
-          ease: 'elastic.out(1, 0.4)',
-          overwrite: 'auto'
-        });
-      });
-    });
-
-    // ─── Magnetic Buttons ───────────────────────────────────────────
-    document.querySelectorAll('[data-magnetic]').forEach(btn => {
-      const strength = 0.35;
-
-      btn.addEventListener('mousemove', throttle(e => {
-        const rect = btn.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * strength;
-        const dy = (e.clientY - cy) * strength;
-
-        gsap.to(btn, {
-          x: dx,
-          y: dy,
-          duration: 0.4,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-      }, 16));
-
-      btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, {
-          x: 0, y: 0,
-          duration: 0.7,
-          ease: 'elastic.out(1, 0.3)',
-          overwrite: 'auto'
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.4)',
+            overwrite: 'auto'
+          });
         });
       });
-    });
+    }
+
+    // ─── Magnetic Buttons (Desktop Only) ───────────────────────────────────────────
+    if (supportsHover) {
+      document.querySelectorAll('[data-magnetic]').forEach(btn => {
+        const strength = 0.35;
+
+        btn.addEventListener('mousemove', throttle(e => {
+          const rect = btn.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (e.clientX - cx) * strength;
+          const dy = (e.clientY - cy) * strength;
+
+          gsap.to(btn, {
+            x: dx,
+            y: dy,
+            duration: 0.4,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }, 16));
+
+        btn.addEventListener('mouseleave', () => {
+          gsap.to(btn, {
+            x: 0, y: 0,
+            duration: 0.7,
+            ease: 'elastic.out(1, 0.3)',
+            overwrite: 'auto'
+          });
+        });
+      });
+    }
 
     // ─── Stat Counter Animation ─────────────────────────────────────
     const statNums = document.querySelectorAll('.stat-num');
@@ -1338,28 +1668,30 @@
       });
     });
 
-    // ─── Parallax Hero Orbs ─────────────────────────────────────────
-    window.addEventListener('mousemove', throttle(e => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      const dx = (e.clientX - cx) / cx;
-      const dy = (e.clientY - cy) / cy;
+    // ─── Parallax Hero Orbs (Desktop Only) ──────────────────────────────────────────
+    if (supportsHover) {
+      window.addEventListener('mousemove', throttle(e => {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const dx = (e.clientX - cx) / cx;
+        const dy = (e.clientY - cy) / cy;
 
-      gsap.to('.hero-orb', {
-        x: dx * 20,
-        y: dy * 20,
-        duration: 1.2,
-        ease: 'power1.out',
-        overwrite: 'auto'
-      });
-      gsap.to('.hero-orb-2', {
-        x: -dx * 30,
-        y: -dy * 30,
-        duration: 1.5,
-        ease: 'power1.out',
-        overwrite: 'auto'
-      });
-    }, 16));
+        gsap.to('.hero-orb', {
+          x: dx * 20,
+          y: dy * 20,
+          duration: 1.2,
+          ease: 'power1.out',
+          overwrite: 'auto'
+        });
+        gsap.to('.hero-orb-2', {
+          x: -dx * 30,
+          y: -dy * 30,
+          duration: 1.5,
+          ease: 'power1.out',
+          overwrite: 'auto'
+        });
+      }, 16));
+    }
   </script>
 </body>
 </html>
